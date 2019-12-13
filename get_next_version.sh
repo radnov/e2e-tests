@@ -3,7 +3,7 @@
 VERSION=0;
 current_branch="v33"
 all_branches=$(git ls-remote --heads origin  | sed 's?.*refs/heads/??' )
-tags=$(git ls-remote --tags origin | sed 's?.*refs/tags/??' )
+tags=($(git ls-remote --tags origin | sed 's?.*refs/tags/??' ))
 echo "$tags"
 
 all_major_versions=$(echo "$all_branches" | tr ' ' '\n' | grep -o -E '^v.*' | grep -o -E '[0-9]+')
@@ -17,6 +17,7 @@ if [[ "$current_branch" == "master" ]]; then
 else 
   current_major_version=$(echo "${current_branch}" | sed 's/v//g')
   echo "current major $current_major_version"
+  echo "${tags[*]}"
   patches=($(echo "${tags[*]}" |
      tr ' ' '\n' | 
      grep -o -E "^2.${current_major_version}.\d" ))
