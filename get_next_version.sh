@@ -21,7 +21,7 @@ else
 
   patches=($(echo "${tags[*]}" |
      tr ' ' '\n' | 
-     grep -o -E -- "^2.${current_major_version}.\\d" ))
+     grep -o -E -- "^2.${current_major_version}.[0-9]" ))
   
   echo "matching patches $patches"
   last_patch=$(echo "${patches[*]}" | tr ' ' '\n' | sort -nr | head -n1 )
