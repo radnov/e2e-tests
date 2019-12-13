@@ -8,6 +8,8 @@ class WdioJiraService {
 
   
   _configure() {
+    console.log('configuring')
+    console.log('version ' + this.options.versionName)
     if (!this.options.isEnabled) {
       return;
     }
