@@ -16,20 +16,20 @@ if [[ "$current_branch" == "master" ]]; then
   VERSION=$next_major_version
 else 
   current_major_version=$(echo "${current_branch}" | sed 's/v//g')
-  echo "$current_major_version"
+  echo "current major $current_major_version"
   patches=($(echo "${tags[*]}" |
      tr ' ' '\n' | 
      grep -o -E "^2.${current_major_version}.\d" ))
   
-  echo "$patches"
+  echo "matching patches $patches"
   last_patch=$(echo "${patches[*]}" | tr ' ' '\n' | sort -nr | head -n1 )
-  echo "$last_patch"
+  echo "last patch $last_patch"
   next_patch=$(($(echo $last_patch | 
     sed "s/2.${current_major_version}.//") + 1))
     
-  echo "$next_patch"
+  echo "next patch $next_patch"
   next_patch=$(echo $next_patch | sed "s/^/2.${current_major_version}./")
-  echo "$next_patch"
+  echo "next patch $next_patch"
   VERSION=$next_patch
 fi
 
