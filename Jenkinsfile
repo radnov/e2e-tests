@@ -47,7 +47,13 @@ pipeline {
       }
 
     }
-   
+    stage('Update instance') {
+      steps {
+        script {
+          INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
+        } 
+      }
+    }
     stage('Prepare reports dir') {
       steps {
         script {
