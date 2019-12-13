@@ -218,7 +218,7 @@ export default class JiraService {
       .then((body) => {
         console.log(body);
         let version = body.filter((version) => {
-          return version.name == versionName;
+          return version.name.equals(versionName);
         });
 
         return Promise.resolve(version[0].id);
