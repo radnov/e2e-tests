@@ -216,6 +216,7 @@ export default class JiraService {
   _getProjectVersionIdByName(versionName) {
     return this._jiraRequest(`/project/${this.projectId}/versions`)
       .then((body) => {
+        console.log(body);
         let version = body.filter((version) => {
           return version.name == versionName;
         });
