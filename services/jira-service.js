@@ -220,7 +220,7 @@ export default class JiraService {
           console.log(ver.name);
           console.log('eq')
           console.log(versionName);
-          console.log(ver.name == versionName)
+          console.log(ver.name.trim() == versionName.trim())
           return ver.name == versionName;
         });
 
