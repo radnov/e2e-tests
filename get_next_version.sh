@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 VERSION=0;
 current_branch="v33"
 all_branches=$(git ls-remote --heads origin  | sed 's?.*refs/heads/??' )
