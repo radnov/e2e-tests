@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION=0;
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+current_branch='master'
 all_branches=$(git ls-remote --heads origin  | sed 's?.*refs/heads/??' )
 tags=$(git ls-remote --tags origin | sed 's?.*refs/tags/??' )
 all_major_versions=$(echo "$all_branches" | tr ' ' '\n' | grep -o -E '^v.*' | grep -o -E '[0-9]+')
