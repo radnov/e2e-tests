@@ -18,6 +18,7 @@ else
   current_major_version=$(echo "${current_branch}" | sed 's/v//g')
   echo "current major $current_major_version"
   echo "${tags[*]}"
+  echo "${tags[*]} | tr ' ' '\n'" 
   patches=($(echo "${tags[*]}" |
      tr ' ' '\n' | 
      grep -o -E "^2.${current_major_version}.\\d" ))
