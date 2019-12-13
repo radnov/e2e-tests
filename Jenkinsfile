@@ -47,14 +47,7 @@ pipeline {
       }
 
     }
-    stage('Update instance') {
-      steps {
-        script {
-          INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
-          sh "instance_name=$INSTANCE_NAME awx_credentials=$AWX_BOT_CREDENTIALS ./update-instance.sh"
-        } 
-      }
-    }
+   
     stage('Prepare reports dir') {
       steps {
         script {
