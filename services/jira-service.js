@@ -224,6 +224,7 @@ export default class JiraService {
           return ver.name == versionName;
         });
 
+        console.log('version' + version)
         return Promise.resolve(version[0].id);
       })
   }
