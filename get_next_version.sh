@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 VERSION=0;
 current_branch="v33"
 all_branches=$(git ls-remote --heads origin  | sed 's?.*refs/heads/??' )
@@ -23,7 +25,7 @@ else
   echo "$test"
   patches=($(echo "${tags[*]}" |
      tr ' ' '\n' | 
-     grep -o -E "^2.${current_major_version}.\\d" ))
+     grep -o -E -- "^2.${current_major_version}.\\d" ))
   
   echo "matching patches $patches"
   last_patch=$(echo "${patches[*]}" | tr ' ' '\n' | sort -nr | head -n1 )
