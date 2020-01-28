@@ -84,7 +84,7 @@ pipeline {
 
       steps {
         sh "npm install"
-        sh "npm run-script browserstack -- --baseUrl=\"${INSTANCE_URL}\""
+        sh "npm run-script browserstack -- --baseUrl=\"${INSTANCE_URL}\" --spec apps.feature"
       }
     }
   }
