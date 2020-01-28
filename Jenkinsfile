@@ -93,6 +93,7 @@ pipeline {
     always {
       script {
         allure([
+          includeProperties: true,
           jdk: '',
           properties: [
             [
