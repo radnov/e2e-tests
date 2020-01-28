@@ -97,11 +97,11 @@ pipeline {
           properties: [
             [
               key: 'allure.results.directory',
-              value: "./reports/allure-results"
+              value: "reports/allure-results"
             ]
           ],
           reportBuildPolicy: 'ALWAYS',
-          results: [[path: "./reports/allure-results"]],
+          results: [[path: "reports/allure-results"]],
           report: "$ALLURE_REPORT_DIR_PATH/$ALLURE_REPORT_DIR"
           ])  
         }     
