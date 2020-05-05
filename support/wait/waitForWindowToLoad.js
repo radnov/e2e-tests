@@ -1,21 +1,23 @@
 module.exports = () => {
-  var retries = 5;
-  var maxRetries = 50;
+  let retries = 5;
+  let maxRetries = 50;
   
   const pageSource = () => {
     return browser.getPageSource().length;
   }
 
-  var source = pageSource();
+  let source = pageSource();
   const check = () => {
     maxRetries--;
-    const newSource = pageSource();
+    let newSource = pageSource();
+    
     if (maxRetries < 1) {
       console.log(`max retry count reached. Won't resume waiting`)
       return true;
     }
 
     if (newSource === source) {
+      console.log('its a match, retry' + retries)
       if (retries <= 0) {
         console.log('finished waiting')
         return true;
@@ -25,12 +27,16 @@ module.exports = () => {
     }
     
     else {
+      console.log('not a match')
       retries = 5;
       source = newSource;
       return false;
     }
   }
+
   browser.waitUntil(() => {
     return check()
   }, 40000, 'Page didnt load in 40s', 400)
+
+  delete source;
 }
