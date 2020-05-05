@@ -1,9 +1,9 @@
 module.exports = () => {
   let retries = 5;
-  let maxRetries = 50;
+  let maxRetries = 25;
   
   const pageSource = () => {
-    return browser.getPageSource().length;
+    return browser.getPageSource().length.toString();
   }
 
   let source = pageSource();
@@ -17,7 +17,6 @@ module.exports = () => {
     }
 
     if (newSource === source) {
-      console.log('its a match, retry' + retries)
       if (retries <= 0) {
         console.log('finished waiting')
         return true;
@@ -27,7 +26,6 @@ module.exports = () => {
     }
     
     else {
-      console.log('not a match')
       retries = 5;
       source = newSource;
       return false;
