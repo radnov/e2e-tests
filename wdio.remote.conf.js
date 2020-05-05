@@ -37,6 +37,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
+  execArgv:['--max_old_space_size=5120'],
   maxInstances: process.env.DEBUG === '1' ? 1 : 10,
   //
   // If you have trouble getting all important capabilities together, check out the
