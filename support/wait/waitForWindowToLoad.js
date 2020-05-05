@@ -15,7 +15,7 @@ module.exports = () => {
       return true;
     }
 
-    if (pageSource === source) {
+    if (pageSource() === source) {
       if (retries <= 0) {
         console.log('finished waiting')
         return true;
