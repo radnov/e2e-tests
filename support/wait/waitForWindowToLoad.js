@@ -5,7 +5,7 @@ module.exports = () => {
   let maxRetries = 25;
   
   const pageSource = () => {
-    return browser.getPageSource();
+    return browser.$('html').getHTML()
   }
 
   let source = pageSource();
