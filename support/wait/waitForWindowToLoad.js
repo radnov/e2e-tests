@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = () => {
   let retries = 5;
   let maxRetries = 25;
