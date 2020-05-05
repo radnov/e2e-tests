@@ -3,21 +3,23 @@ module.exports = () => {
   let maxRetries = 25;
   
   const pageSource = () => {
-    return browser.getPageSource().length.toString();
+    return browser.getPageSource();
   }
 
   let source = pageSource();
   const check = () => {
     maxRetries--;
-    
+    let newsource = pageSource();
     if (maxRetries < 1) {
       console.log(`max retry count reached. Won't resume waiting`)
+      newsource = null;
       return true;
     }
 
-    if (pageSource() === source) {
+    if (newsource === source) {
       if (retries <= 0) {
         console.log('finished waiting')
+        newsource = null;
         return true;
       }
       retries--;
@@ -26,7 +28,7 @@ module.exports = () => {
     
     else {
       retries = 5;
-      source = pageSource();
+      source = newsource;
       return false;
     }
   }
