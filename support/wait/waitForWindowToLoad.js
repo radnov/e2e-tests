@@ -34,4 +34,6 @@ module.exports = () => {
   browser.waitUntil(() => {
     return check()
   }, 40000, 'Page didnt load in 40s', 400)
+
+  source = null
 }
