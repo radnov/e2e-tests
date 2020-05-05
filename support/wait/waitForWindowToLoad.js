@@ -9,9 +9,10 @@ module.exports = () => {
   }
 
   let source = pageSource();
+  let newsource;
   const check = () => {
     maxRetries--;
-    let newsource = pageSource();
+    newsource = pageSource();
     if (maxRetries < 1) {
       console.log(`max retry count reached. Won't resume waiting`)
       newsource = null;
@@ -40,4 +41,5 @@ module.exports = () => {
   }, 40000, 'Page didnt load in 40s', 400)
 
   source = null
+  newsource = null
 }
