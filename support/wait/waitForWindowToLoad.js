@@ -9,14 +9,13 @@ module.exports = () => {
   let source = pageSource();
   const check = () => {
     maxRetries--;
-    let newSource = pageSource();
     
     if (maxRetries < 1) {
       console.log(`max retry count reached. Won't resume waiting`)
       return true;
     }
 
-    if (newSource === source) {
+    if (pageSource === source) {
       if (retries <= 0) {
         console.log('finished waiting')
         return true;
@@ -27,7 +26,7 @@ module.exports = () => {
     
     else {
       retries = 5;
-      source = newSource;
+      source = pageSource();
       return false;
     }
   }
