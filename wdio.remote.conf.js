@@ -57,7 +57,7 @@ exports.config = {
       'os': 'Windows',
       'osVersion': '10',
       'local': 'false',
-      'seleniumVersion': '3.14.0'           
+      'seleniumVersion': '3.141.59'           
   },
     'goog:chromeOptions': {
        'args': [
