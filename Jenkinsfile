@@ -53,7 +53,7 @@ pipeline {
       steps {
         script {
           if (!fileExists("$ALLURE_REPORT_DIR_PATH")) {
-            sh "mkdir $ALLURE_REPORT_DIR_PATH"
+            sh "mkdir -p $ALLURE_REPORT_DIR_PATH"
           } 
           if (fileExists("$ALLURE_RESULTS_DIR")) {
             dir("$ALLURE_RESULTS_DIR", {
