@@ -1,6 +1,8 @@
 @Library('pipeline-library') _
 pipeline {
-  agent any
+  agent {
+    label "ec2"
+  }
   options { disableConcurrentBuilds() }
   environment {
     VERSION = "dev"
