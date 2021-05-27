@@ -8,7 +8,7 @@ pipeline {
     VERSION = "dev"
     INSTANCE_NAME = "${VERSION}_smoke"
     INSTANCE_DOMAIN = "https://smoke.dhis2.org"
-    INSTANCE_URL = ""
+    INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
     GIT_URL = "https://github.com/dhis2/e2e-tests/"
     USERNAME = "$BROWSERSTACK_USERNAME"
     KEY = "$BROWSERSTACK_KEY"
@@ -41,6 +41,7 @@ pipeline {
         script {
           VERSION = "${env.BRANCH_NAME}".split("-")[0]
           INSTANCE_NAME = "${env.BRANCH_NAME}" 
+          INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
           BRANCH_PATH = "./master"
           ALLURE_REPORT_DIR_PATH = "${BRANCH_PATH}/allure"      
           JIRA_RELEASE_VERSION_NAME = "$VERSION"
