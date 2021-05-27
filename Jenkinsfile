@@ -27,10 +27,6 @@ pipeline {
     nodejs "node"
   }
 
-  triggers {
-    cron(env.BRANCH_NAME.contains('.') ? '' : 'H 6 * * *')
-  }
-
   stages {     
     stage('Configure job') {
       when {
