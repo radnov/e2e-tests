@@ -61,10 +61,10 @@ pipeline {
             })
           }   
     
-          sh "mkdir -p ${env.WORKSPACE}/$ALLURE_RESULTS_DIR"
+          sh "mkdir -p ./$ALLURE_RESULTS_DIR"
               
           if (fileExists("$ALLURE_REPORT_DIR_PATH/$ALLURE_REPORT_DIR/history")) {
-            sh "cp  -r $ALLURE_REPORT_DIR_PATH/$ALLURE_REPORT_DIR/history ${env.WORKSPACE}/$ALLURE_RESULTS_DIR/history"
+            sh "cp  -r $ALLURE_REPORT_DIR_PATH/$ALLURE_REPORT_DIR/history ./$ALLURE_RESULTS_DIR/history"
           } 
         } 
       }      
