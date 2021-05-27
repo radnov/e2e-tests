@@ -47,15 +47,6 @@ pipeline {
       }
 
     }
-    stage('Update instance') {
-      steps {
-        script {
-          INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
-          awx.resetWar("$AWX_BOT_CREDENTIALS", "smoke.dhis2.org", "${INSTANCE_NAME}")
-          sh "credentials=system:System123 url=${INSTANCE_URL} ./delete-data.sh"
-        } 
-      }
-    }
     stage('Prepare reports dir') {
       steps {
         script {
