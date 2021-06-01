@@ -8,12 +8,12 @@ pipeline {
     VERSION = "2.36dev"
     INSTANCE_NAME = "${VERSION}_smoke"
     INSTANCE_DOMAIN = "https://smoke.dhis2.org"
-    INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
-    GIT_URL = "https://github.com/dhis2/e2e-tests/"
+    INSTANCE_URL = ""
+    GIT_URL = "https://github.com/radnov/e2e-tests/"
     USERNAME = "$BROWSERSTACK_USERNAME"
     KEY = "$BROWSERSTACK_KEY"
     AWX_BOT_CREDENTIALS = credentials('awx-bot-user-credentials')
-    BRANCH_PATH = "./master"
+    BRANCH_PATH = "${getBranchPath()}"
     ALLURE_REPORT_DIR_PATH = "${BRANCH_PATH}/allure"
     ALLURE_RESULTS_DIR = "reports/allure-results"
     ALLURE_REPORT_DIR = "allure-report-$VERSION"
@@ -37,8 +37,7 @@ pipeline {
         script {
           VERSION = "${env.BRANCH_NAME}".split("-")[0]
           INSTANCE_NAME = "${env.BRANCH_NAME}" 
-          INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
-          BRANCH_PATH = "./master"
+          BRANCH_PATH = "${getBranchPath(true)}"
           ALLURE_REPORT_DIR_PATH = "${BRANCH_PATH}/allure"      
           JIRA_RELEASE_VERSION_NAME = "$VERSION"
           echo "Version: $VERSION, JIRA_RELEASE_VERSION_NAME: $JIRA_RELEASE_VERSION_NAME"
@@ -46,6 +45,15 @@ pipeline {
       }
 
     }
+
+    stage('Update instance') {
+      steps {
+        script {
+          INSTANCE_URL = "${INSTANCE_DOMAIN}/${INSTANCE_NAME}/"
+        }
+      }
+    }
+
     stage('Prepare reports dir') {
       steps {
         script {
